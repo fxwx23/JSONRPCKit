@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 internal protocol BatchElementProcotol {
     associatedtype Request: JSONRPCKit.Request
@@ -26,7 +25,7 @@ internal protocol BatchElementProcotol {
 
 internal extension BatchElementProcotol {
     /// - Throws: JSONRPCError
-    internal func response(from object: Any) throws -> Request.Response {
+    func response(from object: Any) throws -> Request.Response {
         switch result(from: object) {
         case .success(let response):
             return response
@@ -37,7 +36,7 @@ internal extension BatchElementProcotol {
     }
 
     /// - Throws: JSONRPCError
-    internal func response(from objects: [Any]) throws -> Request.Response {
+    func response(from objects: [Any]) throws -> Request.Response {
         switch result(from: objects) {
         case .success(let response):
             return response
@@ -47,7 +46,7 @@ internal extension BatchElementProcotol {
         }
     }
 
-    internal func result(from object: Any) -> Result<Request.Response, JSONRPCError> {
+    func result(from object: Any) -> Result<Request.Response, JSONRPCError> {
         guard let dictionary = object as? [String: Any] else {
             return .failure(.unexpectedTypeObject(object))
         }
@@ -80,9 +79,9 @@ internal extension BatchElementProcotol {
         }
     }
 
-    internal func result(from objects: [Any]) -> Result<Request.Response, JSONRPCError> {
+    func result(from objects: [Any]) -> Result<Request.Response, JSONRPCError> {
         let matchedObject = objects
-            .flatMap { $0 as? [String: Any] }
+            .compactMap { $0 as? [String: Any] }
             .filter { $0["id"].flatMap(Id.init) == id }
             .first
 
@@ -95,19 +94,19 @@ internal extension BatchElementProcotol {
 }
 
 internal extension BatchElementProcotol where Request.Response == Void {
-    internal func response(_ object: Any) throws -> Request.Response {
+    func response(_ object: Any) throws -> Request.Response {
         return ()
     }
 
-    internal func response(_ objects: [Any]) throws -> Request.Response {
+    func response(_ objects: [Any]) throws -> Request.Response {
         return ()
     }
 
-    internal func result(_ object: Any) -> Result<Request.Response, JSONRPCError> {
+    func result(_ object: Any) -> Result<Request.Response, JSONRPCError> {
         return .success(())
     }
 
-    internal func result(_ objects: [Any]) -> Result<Request.Response, JSONRPCError> {
+    func result(_ objects: [Any]) -> Result<Request.Response, JSONRPCError> {
         return .success(())
     }
 }

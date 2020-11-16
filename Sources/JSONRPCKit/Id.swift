@@ -46,6 +46,15 @@ extension Id: Hashable {
             return string.hashValue
         }
     }
+    
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case .number(let number):
+            hasher.combine(number)
+        case .string(let string):
+            hasher.combine(string)
+        }
+    }
 }
 
 public func ==(lhs: Id, rhs: Id) -> Bool {

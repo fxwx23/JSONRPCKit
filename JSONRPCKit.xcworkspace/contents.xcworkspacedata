@@ -11,16 +11,10 @@
       location = "container:"
       name = "Carthage">
       <FileRef
-         location = "group:Cartfile">
-      </FileRef>
-      <FileRef
          location = "group:Cartfile.private">
       </FileRef>
       <FileRef
          location = "group:Carthage/Checkouts/APIKit/APIKit.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Carthage/Checkouts/Result/Result.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>
