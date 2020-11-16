@@ -1,6 +1,6 @@
 # JSONRPCKit
 
-[![Build Status](https://travis-ci.org/bricklife/JSONRPCKit.svg?branch=master)](https://travis-ci.org/bricklife/JSONRPCKit)
+[![Build Status](https://travis-ci.org/fxwx23/JSONRPCKit.svg?branch=master)](https://travis-ci.org/fxwx23/JSONRPCKit)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/cocoapods/v/JSONRPCKit.svg)](https://cocoapods.org/)
 
@@ -21,10 +21,11 @@ response // 19 (type of response is inferred from SubtractRequest.Response)
 
 ## Requirements
 
-- Swift 4.0 / Xcode 9.0 or later
+- Swift 5.0 / Xcode 10.0 or later
     - If you use Swift 3.1 (Xcode 8.3), you can use [2.0.3](https://github.com/bricklife/JSONRPCKit/tree/2.0.3) instead.
+    - If you use Swift 4.2 (Xcode 10), you can use [xcode10-swift4.2](https://github.com/fxwx23/JSONRPCKit/tree/xcode10-swift4.2) branch instead.
 - iOS 8.0 or later
-- macOS 10.9 or later
+- macOS 10.10 or later
 - watchOS 2.0 or later
 - tvOS 9.0 or later
 - [Linux](https://swift.org/download/#linux) is also supported

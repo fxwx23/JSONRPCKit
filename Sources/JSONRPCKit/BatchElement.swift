@@ -81,7 +81,7 @@ internal extension BatchElementProcotol {
 
     func result(from objects: [Any]) -> Result<Request.Response, JSONRPCError> {
         let matchedObject = objects
-            .flatMap { $0 as? [String: Any] }
+            .compactMap { $0 as? [String: Any] }
             .filter { $0["id"].flatMap(Id.init) == id }
             .first
 
