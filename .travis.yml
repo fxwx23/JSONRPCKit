@@ -33,14 +33,14 @@ matrix:
       env:
         - JOB=Linux
         - SWIFT_VERSION=5.3
-      script:
+      install:
+        - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
         - swift --version
+      script:
         - swift build
         - swift test
       sudo: required
       dist: trusty
-      install:
-        - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
 
 notifications:
   email: false
